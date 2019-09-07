@@ -4,12 +4,14 @@
   intervention
 * For API calling we require USERNAME, API TOKEN for the USERNAME and CRUMB 
 
-CRUMB=$(wget -q --auth-no-challenge --user username --password Password --output-document - 'http://192.168.1.49:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+#### Getting the crumb
 
 export USERNAME="student"
+
 export API_TOKEN="11bc44f5ff5fe1e952b13a39b4e4b33f38"
+
 export IP="3.219.41.57:8080"
-#### Getting the crumb
+
 export CRUMB=$(wget -q --auth-no-challenge --user $USERNAME --password OmgPassword!  --output-document - 'http://3.219.41.57:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
 
 #export PATH_TO_JOB="job/newproject/job/first/"
@@ -21,6 +23,7 @@ export PATH_TO_JOB="job/copyone/"
 export URL="http://$USERNAME:$API_TOKEN@$IP/$PATH_TO_JOB"
 
 ### Firing a build request:
+
 curl -I -X POST $URL/build -H "$CRUMB"
 
 **build** is the API call
