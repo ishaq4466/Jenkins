@@ -1,27 +1,27 @@
-#1. Installation for jenkins
+### 1. Jenkins installation and configuration
 sudo yum install -y java-1.8.0-openjdk-devel
 sudo yum install -y wget
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
 sudo yum install -y jenkins
 
-#2. Building in jenkins
+### 2. Building jobs in jenkins
 
 Simple Tasks: 
 * Creating a folder 
 * Creating a build with shell executing the command and redirected into the 
 user_test.txt, file can be viewed by going into workspace folder
 
-#3. Building from SCM
+### 3. Building from SCM
 
 * Installing and configuring maven for Build
-Global tool configuration
+	Global tool configuration
 * In scm put git repo address
 * invoke top level jenkins
 * run a shell command bin/makeindex
 * Archeiving the artifact index.jsp
 
-#4. Distributing the build on a remote server i.e master-slave configuration
+### 4. Distributing the build on a remote server i.e master-slave configuration
 [Master]
 * SSH to the master jenkins server
 * configured the /etc/passwd for default shell cmd /bin/bash for jenkins
@@ -50,11 +50,12 @@ Global tool configuration
 
 
 
-#5. Building an application as a Freestyle project
-Freestlye projet allows to builds automatically whenever the changes/pushed occured in
+### 5. Build an automate build using git webhook trigger
+
+* Freestlye projet allows to builds automatically whenever the changes/pushed occured in
 the source code repo using webhook triggers.
 
-Main purpose is to connect the github repo and jenkins server using webhook
+* Main purpose is to connect the github repo and jenkins server using webhook
 trigger so that when any changes occurred into the github repo 
 the build should automatically trrggrs 
 
