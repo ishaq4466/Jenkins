@@ -1,9 +1,27 @@
 ### 1. Jenkins installation and configuration
+```
 sudo yum install -y java-1.8.0-openjdk-devel
+
 sudo yum install -y wget
+
 sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat/jenkins.repo
+
 sudo rpm --import https://pkg.jenkins.io/redhat/jenkins.io.key
+
 sudo yum install -y jenkins
+
+update-alternatives --config java
+
+tail -100f /var/log/jenkins/jenkins.log
+
+/etc/sysconfig/jenkins
+# calling jenkins war 
+java -jar jenkins.war --sessionTimeout=10080 --httpKeepAliveTimeout=600000
+
+
+/etc/alternatives/java -Dcom.sun.akuma.Daemon=daemonized -Djava.awt.headless=true -DJENKINS_HOME=/var/lib/jenkins -jar /usr/lib/jenkins/jenkins.war --logfile=/var/log/jenkins/jenkins.log --webroot=/var/cache/jenkins/war --daemon --httpPort=8080 --sessionTimeout=10080 --httpKeepAliveTimeout=600000 --httpListenAddress=0.0.0.0 --debug=5 --handlerCountMax=100  --handlerCountMaxIdle=20
+```
+
 
 ### 2. Building jobs in jenkins
 
@@ -53,11 +71,11 @@ user_test.txt, file can be viewed by going into workspace folder
 ### 5. Build an automate build using git webhook trigger
 
 * Freestlye projet allows to builds automatically whenever the changes/pushed occured in
-the source code repo using webhook triggers.
+  the source code repo using webhook triggers.
 
 * Main purpose is to connect the github repo and jenkins server using webhook
-trigger so that when any changes occurred into the github repo 
-the build should automatically trrggrs 
+  trigger so that when any changes occurred into the github repo 
+  the build should automatically trrggrs 
 
 * Get the access token from the github account by going to the developer setting in github
   admin:repo_hook
