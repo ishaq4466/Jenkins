@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$1" == "build" ]
+if [ "$1" == "deploy" ]
 then
 
 	docker build -t jenkins-master .
