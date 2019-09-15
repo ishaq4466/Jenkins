@@ -5,8 +5,9 @@ then
 
 	echo "Building the image"
 
-	docker build -t jenkins-master .
-
+	# docker build -t jenkins-master .
+	# passing the host user name
+	docker build --build-arg user_name=$USER -t jenkins-master .
 	echo "Create secrets....."
 	# docker swarm init
 	echo "admin" | docker secret create jenkins-user -
