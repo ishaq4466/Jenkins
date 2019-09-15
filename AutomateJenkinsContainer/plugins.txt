@@ -1,0 +1,14 @@
+email-ext
+mailer
+slack
+
+# Artifacts
+htmlpublisher
+
+# UI
+greenballs
+simple-theme-plugin
+
+# Scaling
+kubernetes
+groovy
