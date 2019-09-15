@@ -1,19 +1,20 @@
 #!/bin/bash
 
-docker build -t jenkins-master .
+if [ "$1" == "build" ]
+then
 
-echo "Create secrets"
-echo "admin" | docker secret create jenkins-user -
-echo "admin" | docker secret create jenkins-pass -
+	docker build -t jenkins-master .
 
-echo "Running the stack"
+	echo "Create secrets.."
+	# docker swarm init
+	echo "admin" | docker secret create jenkins-user -
+	echo "admin" | docker secret create jenkins-pass -
+	echo "Running the stack...."
 
-# docker run -itd -u 0 -p 8080:8080 -p 50000:50000 -v "$HOME/jenkins-data":/var/jenkins_home --name j1 jenkins-master
-# docker run -itd -p 8080:8080 -p 50000:50000 --name j1 jenkins-master
-
-
-
-# docker stack deploy -c jenkins.yml jenkins
+	# docker run -itd -u 0 -p 8080:8080 -p 50000:50000 -v "$HOME/jenkins-data":/var/jenkins_home --name j1 jenkins-master
+	# docker run -itd -p 8080:8080 -p 50000:50000 --name j1 jenkins-master
+	docker stack deploy -c jenkins.yml jenkins
+fi
 
 if [ "$1" == "clean" ]
 then 
