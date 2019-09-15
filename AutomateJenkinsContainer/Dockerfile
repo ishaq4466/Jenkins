@@ -1,5 +1,5 @@
-# FROM jenkins/jenkins:lts-alpine
-FROM jenkins/jenkins:2.176.3
+#FROM jenkins/jenkins:2.176.3
+FROM jenkinsci/blueocean
 
 
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
