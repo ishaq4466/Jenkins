@@ -1,7 +1,6 @@
-FROM jenkins/jenkins:2.176.3
+FROM jenkins/jenkins:lts-alpine
 
 ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
-
 COPY createuser.groovy /usr/share/jenkins/ref/init.groovy.d/createuser.groovy
 
 # COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
